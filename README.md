@@ -11,4 +11,4 @@ Before deploying, the build must go through local testing.
 
 1) ```yarn build``` to build the project.
 2) ```cd build```
-3) ```git push``` to deploy to server host - [deanoverton.com] (http://deanoverton.com)
+3) ```git push``` to deploy to server host - [deanoverton.com](http://deanoverton.com)
