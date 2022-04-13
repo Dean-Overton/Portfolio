@@ -1,0 +1,10 @@
+.contact-holder {
+  margin: 0 auto 0 auto;
+  display: block;
+  padding: 20px;
+  width: fit-content;
+}
+.contact-holder > *  {
+  margin: 20px;
+  display:block;
+}

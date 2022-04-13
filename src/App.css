@@ -36,3 +36,7 @@
     transform: rotate(360deg);
   }
 }
+p {
+  font-weight: 800;
+  font-family: 'Times New Roman', Times, serif;
+}
