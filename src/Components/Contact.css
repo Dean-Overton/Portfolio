@@ -1,8 +1,22 @@
 .contact-holder {
+  width: 100vw;
+  margin: 0 auto 0 auto;
+
+  transition: ease-in-out all 0.5s;
+  -moz-transition: all 0.5s ease-in-out;
+  -webkit-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+}
+.contact-paper {
   margin: 0 auto 0 auto;
   display: block;
-  padding: 20px;
-  width: fit-content;
+  padding: 10px 20px 10px 20px;
+}
+@media only screen and (min-width:800px) {
+  .contact-holder{
+    width: 600px;
+  }
 }
 .contact-holder > *  {
   margin: 20px;
