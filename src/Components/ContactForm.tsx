@@ -1,5 +1,6 @@
 import { useState, useRef } from "react";
 import emailjs from "emailjs-com";
+import ReCAPTCHA from "react-google-recaptcha";
 
 import { Alert, Box, Link, Paper, Snackbar, Typography } from "@mui/material";
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
@@ -7,7 +8,6 @@ import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 
 import './Contact.css';
-import React from "react";
 
 const initialFormValues = {
   fullName: "",
@@ -109,6 +109,8 @@ const contactFieldValues = [
 ];
 export const ContactForm = () => 
 {
+  const reCaptchaRef = useRef(null)
+
   const [notificationOpen, setNotificationOpen] = useState(false);
   const setNotificationClose = () => {
     setNotificationOpen(false);
@@ -152,10 +154,17 @@ export const ContactForm = () =>
             <Button 
               type="submit" 
               tabIndex={contactFieldValues.length} 
-              disabled={!formIsValid()} 
+              disabled={!formIsValid()}
               fullWidth 
               variant="contained"
               >Submit</Button>
+              <ReCAPTCHA
+                sitekey={process.env.REACT_APP_CONTACT_KEY ?? ""}
+                ref={reCaptchaRef}
+                theme="light"
+                type="image"
+                size="normal"
+                />
           </Box>
           <Typography>Or email me at <Link href="mailto:contact@deanoverton.com">contact@deanoverton.com</Link></Typography>
         </Paper>
