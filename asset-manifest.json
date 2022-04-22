@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/Portfolio/static/css/main.5b5dabeb.css",
-    "main.js": "/Portfolio/static/js/main.155e4938.js",
-    "static/js/787.71e672d5.chunk.js": "/Portfolio/static/js/787.71e672d5.chunk.js",
-    "index.html": "/Portfolio/index.html",
-    "main.5b5dabeb.css.map": "/Portfolio/static/css/main.5b5dabeb.css.map",
-    "main.155e4938.js.map": "/Portfolio/static/js/main.155e4938.js.map",
-    "787.71e672d5.chunk.js.map": "/Portfolio/static/js/787.71e672d5.chunk.js.map"
+    "main.css": "/www.deanoverton.com/static/css/main.5b5dabeb.css",
+    "main.js": "/www.deanoverton.com/static/js/main.9f1d768b.js",
+    "static/js/787.71e672d5.chunk.js": "/www.deanoverton.com/static/js/787.71e672d5.chunk.js",
+    "index.html": "/www.deanoverton.com/index.html",
+    "main.5b5dabeb.css.map": "/www.deanoverton.com/static/css/main.5b5dabeb.css.map",
+    "main.9f1d768b.js.map": "/www.deanoverton.com/static/js/main.9f1d768b.js.map",
+    "787.71e672d5.chunk.js.map": "/www.deanoverton.com/static/js/787.71e672d5.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.5b5dabeb.css",
-    "static/js/main.155e4938.js"
+    "static/js/main.9f1d768b.js"
   ]
 }
