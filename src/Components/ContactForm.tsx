@@ -58,7 +58,7 @@ export const useFormControls = (setNotificationOpen: any) => {
 
     e.preventDefault();
     if (formIsValid()) {
-      emailjs.sendForm('service_376mxsd', 'template_0brmh4l', e.target, 'wpdcu1feQaYV1F7jn')
+      emailjs.sendForm('service_376mxsd', 'template_0brmh4l', e.target, process.env.REACT_APP_PUBLIC_EMAIL_KEY)
       .then((result) => {
           console.log("MESSAGE SENT");
           setNotificationOpen(true);
