@@ -15,6 +15,8 @@ import ListItemText from '@mui/material/ListItemText';
 import AutoAwesomeMotionIcon from '@mui/icons-material/AutoAwesomeMotion';
 import AbcIcon from '@mui/icons-material/Abc';
 import MailIcon from '@mui/icons-material/Mail';
+import GitHub from '@mui/icons-material/GitHub';
+import { FaStackOverflow } from 'react-icons/fa';
 
 const drawerWidth = 200;
 
@@ -106,7 +108,7 @@ export default function NavDrawer() {
         </DrawerHeader>
         <Divider />
         <List>
-          {['Languages', 'Projects', 'Contact'].map((text, index) => (
+          {['About', 'Projects', 'Contact'].map((text, index) => (
             <ListItemButton
               key={text}
               component="a"
@@ -125,6 +127,33 @@ export default function NavDrawer() {
                 }}
               >
                 {index == 0 ? <AbcIcon/> : index == 1 ? <AutoAwesomeMotionIcon /> : <MailIcon />}
+              </ListItemIcon>
+              <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
+            </ListItemButton>
+          ))}
+        </List>
+        <Divider />
+        <List>
+          {['Github'].map((text, index) => (
+            <ListItemButton
+              key={text}
+              component="a"
+              href={'https://bit.ly/3ksZESd'}
+              target="_blank"
+              sx={{
+                minHeight: 48,
+                justifyContent: open ? 'initial' : 'center',
+                px: 2.5,
+              }}
+            >
+              <ListItemIcon
+                sx={{
+                  minWidth: 0,
+                  mr: open ? 3 : 'auto',
+                  justifyContent: 'center',
+                }}
+              >
+                {<GitHub/>}
               </ListItemIcon>
               <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
             </ListItemButton>

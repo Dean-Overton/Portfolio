@@ -4,17 +4,40 @@ import { ContactForm } from './Components/ContactForm';
 import Box from '@mui/material/Box'
 import NavDrawer from './Components/NavDrawer';
 import { DrawerHeader } from './Components/NavDrawer';
+import Camera from './images/canon650d.png';
+import SoccerBall from './images/soccerball.png';
 
-function App() {
+function App() {  
   return (
     <div className="App">
       <NavDrawer/>
 
       <Box component="main" sx={{ flexGrow: 1, p: 3, px: 7}}>
         <DrawerHeader/>
+        <div id="about">
+          <Typography variant="h2">Dean Overton</Typography>
+          <Typography variant="subtitle1">The summary and timeline of who I am and the projects I've worked on.</Typography>
 
-        <Typography variant="h2">Dean Overton</Typography>
-        <Typography variant="subtitle1">A brief summary and timeline of the projects I've worked on.</Typography>
+          <Typography variant="body1">Played soccer since i was 6</Typography>
+          <img src={SoccerBall} width='200px' style={{opacity:'50%',  transform: 'rotate(-30deg)'}}/>
+
+          <Typography variant="body1">Fell in love with creating something in HTML at 11</Typography>
+
+          <Typography variant="body1">Learned game developement in my years at high school</Typography>
+
+          <Typography variant="body1">Created short (quite voilent) films with a love for filmography.</Typography>
+          <img src={Camera} width='300px' style={{opacity:'50%', transform: 'rotate(-30deg)'}}/>
+
+          <Typography variant="body1">Working with my brother in coding projects</Typography>
+
+          <Typography variant="body1">A passion for the environment; Growing a home vegetable garden</Typography>
+          
+          <Typography variant="body1">Learned game developement in my years at high school</Typography>
+
+          <Typography variant="h5">...that brings us to TODAY: </Typography>
+          <Typography variant="h6">An extremely enthusiastic 17 year old who is motivated to work on projects.</Typography>
+        </div>
+        
         <div id="contact">
           <ContactForm/>
         </div>
