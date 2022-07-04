@@ -12,9 +12,9 @@ function App() {
     <div className="App">
       <NavDrawer/>
 
-      <Box component="main" sx={{ flexGrow: 1, p: 3, px: 7}}>
+      <Box component="main">
         <DrawerHeader/>
-        <div id="about">
+        <Box id="about" sx={{ flexGrow: 0, p: 3, px: 7}}>
           <Typography variant="h2">Dean Overton</Typography>
           <Typography variant="subtitle1">The summary and timeline of who I am and the projects I've worked on.</Typography>
 
@@ -36,7 +36,7 @@ function App() {
 
           <Typography variant="h5">...that brings us to TODAY: </Typography>
           <Typography variant="h6">An extremely enthusiastic 17 year old who is motivated to work on projects.</Typography>
-        </div>
+        </Box>
         
         <div id="contact">
           <ContactForm/>

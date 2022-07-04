@@ -16,7 +16,6 @@ import AutoAwesomeMotionIcon from '@mui/icons-material/AutoAwesomeMotion';
 import AbcIcon from '@mui/icons-material/Abc';
 import MailIcon from '@mui/icons-material/Mail';
 import GitHub from '@mui/icons-material/GitHub';
-import { FaStackOverflow } from 'react-icons/fa';
 
 const drawerWidth = 200;
 
@@ -84,7 +83,7 @@ export default function NavDrawer() {
   };
 
   return (
-    <>
+    <div className="wide-nav">
       <CssBaseline />
       <Drawer variant="permanent" open={open}>
         <DrawerHeader>
@@ -160,6 +159,6 @@ export default function NavDrawer() {
           ))}
         </List>
       </Drawer>
-    </>
+    </div>
   );
 }

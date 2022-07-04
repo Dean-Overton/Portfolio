@@ -40,3 +40,11 @@ p {
   font-weight: 800;
   font-family: 'Times New Roman', Times, serif;
 }
+.wide-nav {
+  display: block;
+}
+@media only screen and (max-width:800px) {
+  .wide-nav {
+    display: none;
+  }
+}
