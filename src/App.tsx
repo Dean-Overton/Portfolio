@@ -1,4 +1,4 @@
-import { Typography } from '@mui/material';
+import { Alert, Snackbar, Typography } from '@mui/material';
 import './App.css';
 import { ContactForm } from './Components/ContactForm';
 import Box from '@mui/material/Box'
@@ -42,7 +42,26 @@ function App() {
           <ContactForm/>
         </div>
         <Typography variant="body1">Website made with <b>React, MUI and Typescript</b></Typography>
+        
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        
+        <Snackbar
+          open
+          autoHideDuration={30000}
+        >
+          <Alert
+            variant="filled"
+            severity="info"
+          >
+            This portfolio is <b>still in developement.</b> Please contact me for a copy of my resume.
+          </Alert>
+        </Snackbar>
       </Box>
+      
     </div>
   );
 }
