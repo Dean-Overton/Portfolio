@@ -48,3 +48,39 @@ p {
     display: none;
   }
 }
+.box {
+  content: "";
+  display: table;
+  clear: both;
+  margin: 0 auto;
+}
+@media screen and (min-width: 900px) {
+  .block {
+      display: block;
+      float: left;
+      width: 24.9%;
+      vertical-align: top;
+      margin: 0 -50px
+  }
+}
+/* Profile Pic side by side with name */
+@media screen and (max-width: 899px) {
+  .block {
+      display: block;
+  }
+  .column {
+    width: 80vw;
+  }
+}
+.column {
+  float: right;
+  height: 470px;
+  width: 23%;
+  padding: 0 10;
+}
+#pfpandname {
+  text-align: center;
+}
+#column1 {
+  width: 60%;
+}

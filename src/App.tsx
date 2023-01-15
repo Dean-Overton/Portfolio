@@ -16,12 +16,20 @@ function App() {
 
       <Box component="main">
         <DrawerHeader/>
-        <Box id="about" sx={{ flexGrow: 0, p: 3, px: 7}}>
-          <Typography variant="h2">Dean Overton</Typography>
-          <Avatar 
-            alt="Dean Overton's profile picture" 
-            src={Face} 
-            sx={{ width: 500, height: 500, margin: '0 auto'}}/>
+        <Box id="about" sx={{ flexGrow: 0, p: 3, px: 2}}>
+          <Box className="box" id="pfpandname">
+            <div className="block" id="column1">
+              <Typography variant="h2" sx={{ width: 500 }}>Dean Overton</Typography>
+            </div>
+            <div className="block" id="column2">
+              <Avatar 
+                alt="Dean Overton's profile picture" 
+                id="pfp"
+                src={Face} 
+                sx={{ width: 500, height: 500, margin: '0 auto'}}/>
+            </div>
+          </Box>
+
           <hr/>
           <br/>
           <Typography variant="subtitle1">The summary and timeline of who I am and the projects I've worked on.</Typography>
