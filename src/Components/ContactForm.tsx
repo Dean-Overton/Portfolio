@@ -159,7 +159,7 @@ export const ContactForm = () =>
               variant="contained"
               >Submit</Button>
           </Box>
-          <Typography>Or email me at <Link href="mailto:contact@deanoverton.com">contact@deanoverton.com</Link></Typography>
+          <Typography>Or email me at <Link href="mailto:deanoverton13+removethis@outlook.com">deanoverton13+removethisalongwithplus@outlook.com</Link></Typography>
         </Paper>
         <Snackbar
           open={notificationOpen}
