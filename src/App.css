@@ -62,11 +62,17 @@ p {
       vertical-align: top;
       margin: 0 -50px
   }
+  #column1 {
+    width: 60%;
+  }
 }
 /* Profile Pic side by side with name */
 @media screen and (max-width: 899px) {
   .block {
       display: block;
+  }
+  #column1 {
+    width: 100%;
   }
   .column {
     width: 80vw;
@@ -80,7 +86,4 @@ p {
 }
 #pfpandname {
   text-align: center;
-}
-#column1 {
-  width: 60%;
 }
