@@ -41,15 +41,17 @@ function App() {
           <br/>
           
           <Typography variant="body1">HTML and Batch programming at 11</Typography>
-          <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fc.tenor.com%2FAcrJynkiNzcAAAAM%2Fcmd-command.gif&f=1&nofb=1&ipt=7441f9c339779f4c18eb8949faaac2ac06b8d79b4f58d1f86e99190eea5e3288&ipo=images" width='200px' style={{margin: '1em 0 1em 30vw', marginLeft: '30vw', marginTop: '1em', opacity:'50%'}}/>
+          <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fc.tenor.com%2FAcrJynkiNzcAAAAM%2Fcmd-command.gif&f=1&nofb=1&ipt=7441f9c339779f4c18eb8949faaac2ac06b8d79b4f58d1f86e99190eea5e3288&ipo=images" width='200px' style={{margin: '1em 0 1em 30vw', marginLeft: '30vw', marginTop: '1em', opacity:'90%'}}/>
           <br/>
           
           <Typography variant="body1">Game developement in my years at high school.</Typography>
           <br/>
           <Typography variant="body1">A passion for the environment; Growing a home vegetable garden.</Typography>
+          <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2F1.bp.blogspot.com%2F-GuWilb37otg%2FXTe1FBKampI%2FAAAAAAAADe8%2FnLT2nCWXoD0mqk4-SD7yUHiod4jCyA2JQCLcBGAs%2Fs1600%2FESP32-Module.png" width='300px' style={{margin: '1em 10vw 1em 0', marginTop: '1em', opacity:'90%'}}/>
+          <br/>
           <br/>
           <Typography variant="body1">Love for filmography.</Typography>
-          <img src={Camera} width='300px' style={{opacity:'50%', transform: 'rotate(-30deg)'}}/>
+          <img src={Camera} width='300px' style={{opacity:'80%', transform: 'rotate(-30deg)'}}/>
           <br/>
           <Typography variant="body1">Working with my brother in coding projects.</Typography>
           <br/>
