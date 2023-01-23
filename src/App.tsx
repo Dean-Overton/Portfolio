@@ -8,6 +8,7 @@ import Camera from './images/canon650d.png';
 import SoccerBall from './images/soccerball.png';
 import Face from './images/FaceImage.png';
 import Avatar from '@mui/material/Avatar';
+import VerticalLinearStepper from './Components/VerticalLinearStepper';
 
 function App() {  
   return (
@@ -71,7 +72,10 @@ function App() {
         <br/>
         <br/>
         <br/>
-        
+        {/* <div style={{top: '700px', right: '100px', float: 'right', position: 'absolute'}}>
+          <VerticalLinearStepper/>
+        </div> */}
+
         <Snackbar
           open
           autoHideDuration={30000}

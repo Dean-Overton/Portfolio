@@ -60,15 +60,17 @@ export const useFormControls = (setNotificationOpen: any) => {
     if (formIsValid()) {
       // setNotificationOpen(true);
       // e.target.reset();
+      console.log("Sorry, but as of now, the form does not work. Try contact me on my email or social media!");
       
-      emailjs.sendForm('service_376mxsd', 'template_0brmh4l', e.target, process.env.REACT_APP_PUBLIC_EMAIL_KEY)
-      .then((result) => {
-          console.log("MESSAGE SENT");
-          setNotificationOpen(true);
-          e.target.reset();
-      }, (error) => {
-          console.log(error.text);
-      });
+      
+      // emailjs.sendForm('service_376mxsd', 'template_0brmh4l', e.target, process.env.REACT_APP_PUBLIC_EMAIL_KEY)
+      // .then((result) => {
+      //     console.log("MESSAGE SENT");
+      //     setNotificationOpen(true);
+      //     e.target.reset();
+      // }, (error) => {
+      //     console.log(error.text);
+      // });
     }
   }
   const formIsValid = (fieldValues = values) => {
@@ -78,7 +80,7 @@ export const useFormControls = (setNotificationOpen: any) => {
       fieldValues.email &&
       Object.values(errors).every((x) => x === "");
 
-    return isValid;
+    return false;
   }
  return {
     handleInputValue,
@@ -157,9 +159,9 @@ export const ContactForm = () =>
               disabled={!formIsValid()} 
               fullWidth 
               variant="contained"
-              >Submit</Button>
+              ><del>Submit</del>. Sorry form submissions unavailable. :(</Button>
           </Box>
-          <Typography>Or email me at <Link href="mailto:deanoverton13+removethis@outlook.com">deanoverton13+removethisalongwithplus@outlook.com</Link></Typography>
+          <Typography>Contact me at <Link href="mailto:deanoverton13+removethis@outlook.com">deanoverton13+removethisalongwithplus@outlook.com</Link></Typography>
         </Paper>
         <Snackbar
           open={notificationOpen}
