@@ -1,4 +1,4 @@
-import { Alert, Snackbar, Typography } from '@mui/material';
+import { Alert, Button, Snackbar, Typography } from '@mui/material';
 import './App.css';
 import { ContactForm } from './Components/ContactForm';
 import Box from '@mui/material/Box'
@@ -8,7 +8,7 @@ import Camera from './images/canon650d.png';
 import SoccerBall from './images/soccerball.png';
 import Face from './images/FaceImage.png';
 import Avatar from '@mui/material/Avatar';
-import VerticalLinearStepper from './Components/VerticalLinearStepper';
+import ButtonReveal from './Components/CharityButton';
 
 function App() {  
   return (
@@ -17,6 +17,7 @@ function App() {
 
       <Box component="main">
         <DrawerHeader/>
+
         <Box id="about" sx={{ flexGrow: 0, p: 3, px: 2}}>
           <Box className="box" id="pfpandname">
             <div className="block" id="column1">
@@ -29,6 +30,9 @@ function App() {
                 src={Face} 
                 sx={{ width: 500, height: 500, margin: '0 auto'}}/>
             </div>
+          </Box>
+          <Box sx={{ flexGrow: 0, p: 3, px: 2}}>
+            <ButtonReveal mainText='HERE' href="https://donatenow.wfp.org/gdg/~my-donation?redirected=AU"/>
           </Box>
 
           <hr/>
