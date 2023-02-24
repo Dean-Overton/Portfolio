@@ -73,6 +73,9 @@ p {
   }
   #column1 {
     width: 100%;
+    margin-right: 30px;
+    overflow: visible;
+    text-overflow: ellipsis;
   }
   .column {
     width: 80vw;
@@ -81,9 +84,9 @@ p {
 .column {
   float: right;
   height: 470px;
-  width: 23%;
+  width: 50vw;
   padding: 0 10;
 }
 #pfpandname {
-  text-align: center;
+  float: center;
 }

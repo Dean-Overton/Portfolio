@@ -1,8 +1,6 @@
 import * as React from 'react';
 import { FC } from 'react';
 
-import './ButtonRevealText.css';
-
 import BloodtypeIcon from '@mui/icons-material/Bloodtype';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
