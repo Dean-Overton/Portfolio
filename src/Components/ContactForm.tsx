@@ -126,7 +126,7 @@ export const ContactForm = () =>
   } = useFormControls(setNotificationOpen);
 
   return (
-    <form onSubmit={handleFormSubmit}>
+    <form onSubmit={handleFormSubmit} method="POST" data-netlify="true">
       <div className="contact-holder">
         <Paper elevation={3} className="contact-paper">
           <h2>Lets link up!</h2>
@@ -151,6 +151,7 @@ export const ContactForm = () =>
               </Box>
             );
           })}
+          {/* <input type="hidden" name="form-name" value="message-form"/> */}
           {/* <div className="g-recaptcha" data-sitekey="your_site_key"></div> */}
           <Box sx={{m:2}}>
             <Button 
@@ -159,9 +160,9 @@ export const ContactForm = () =>
               disabled={!formIsValid()} 
               fullWidth 
               variant="contained"
-              ><del>Submit</del>. Sorry form submissions unavailable. :(</Button>
+              >Send Message</Button>
           </Box>
-          <Typography>Contact me at <Link href="mailto:deanoverton13+removethis@outlook.com">deanoverton13+removethisalongwithplus@outlook.com</Link></Typography>
+          <Typography>Contact me at <Link href="mailto:deanoverton13+removethis@outlook.com">deanoverton13+removethis@outlook.com</Link></Typography>
         </Paper>
         <Snackbar
           open={notificationOpen}

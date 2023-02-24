@@ -2,11 +2,74 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
+import Home from './pages/Home';
+import Book from './pages/ChatGPTMILLIONDOLLARGuide';
+import FourZeroFour from './pages/404';
 import reportWebVitals from './reportWebVitals';
+
+import { createTheme, ThemeOptions, ThemeProvider } from '@mui/material/styles';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+
+const themeOptions: ThemeOptions = {
+  palette: {
+    mode: 'dark',
+    primary: {
+      main: '#A8DADC',
+    },
+    secondary: {
+      main: '#E63946',
+    },
+    background: {
+      default: '#1D3557',
+      paper: '#457B9D',
+    },
+    text: {
+      primary: '#ffffff',
+      secondary: '#c1fdff',
+      disabled: '#e53935',
+    },
+  },
+  typography: {
+    h1: {
+      fontFamily: 'Oswald',
+      fontSize: '6rem',
+    },
+    fontFamily: 'Oswald',
+    body1: {
+      fontFamily: 'Fira Code',
+    },
+    body2: {
+      fontFamily: 'Roboto',
+    },
+    button: {
+      fontWeight: 500,
+      fontSize: '1rem',
+    },
+    subtitle1: {
+      fontFamily: 'Fira Code',
+      fontWeight: 600,
+    },
+  },
+  spacing: 8,
+  shape: {
+    borderRadius: 10,
+  },
+};
+const theme = createTheme(themeOptions);
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <ThemeProvider theme={theme}>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<App />}>
+            <Route index element={<Home />} />
+            <Route path="million-dollar-guide" element={<Book />} />
+            <Route path="*" element={<FourZeroFour />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </ThemeProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
