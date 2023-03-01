@@ -3,7 +3,6 @@ import { FC } from 'react';
 
 import BloodtypeIcon from '@mui/icons-material/Bloodtype';
 import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
 import ButtonGroup from '@mui/material/ButtonGroup';
 
 interface CharityButtonProps {
@@ -11,7 +10,7 @@ interface CharityButtonProps {
     // hintText?: string; 
     href?: string;
 }
-const CharityButton: FC<CharityButtonProps> = ({ mainText, href, children }) => {
+const CharityButton: FC<CharityButtonProps> = ({ mainText, href }) => {
     return (
         <a style={{color: 'inherit', textDecoration: 'inherit'}} href={href} target="_blank" className="mainButtonReveal">
             <ButtonGroup variant="contained">

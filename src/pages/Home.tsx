@@ -1,19 +1,17 @@
-import { Alert, Button, Link, Paper, rgbToHex, Snackbar, Typography } from '@mui/material';
+import { Alert, Link, Paper, Snackbar, Typography } from '@mui/material';
 import './../App.css';
 import { ContactForm } from './../Components/ContactForm';
-import FiverrGig from './../Components/FiverrGig';
 import Box from '@mui/material/Box'
 import NavDrawer from './../Components/NavDrawer';
-import { DrawerHeader } from './../Components/NavDrawer';
-import Camera from './../images/canon650d.png';
+import Camera from './../images/canon650d.webp';
 import SoccerBall from './../images/soccerball.png';
-import Face from './../images/FaceImage.jpg';
+import Face from './../images/FaceImage.webp';
 import Avatar from '@mui/material/Avatar';
 import ButtonReveal from './../Components/CharityButton';
 
 function Home() {  
   return (
-    <div className="App">
+    <>
       <NavDrawer/>
 
       <Box component="main">
@@ -40,15 +38,15 @@ function Home() {
             <Typography variant="h4">About</Typography>
             <br/>
             <Typography variant="body1" style={{display: 'inline-block'}}>CURRENTLY:</Typography>
-            <li><Typography variant="body1" style={{display: 'inline-block'}}>STUDYING FOR THE <a href="https://www.eccouncil.org/certified-ethical-hacker-training-and-certification/" style={{color:'whitesmoke'}} target={'_blank'}>CEHv10 Exam</a>!</Typography></li>
+            <li><Typography variant="body1" style={{display: 'inline-block'}}>STUDYING FOR THE <a href="https://www.eccouncil.org/certified-ethical-hacker-training-and-certification/" style={{color:'whitesmoke'}} rel="noreferrer" target={'_blank'}>CEHv10 Exam</a>!</Typography></li>
             <li><Typography variant="body1" style={{display: 'inline-block'}}>About to commence Bachelor of Computer Science (2023-2026)</Typography></li>
 
             <br/>
             <br/>
-            <Typography variant="body1">Other:</Typography>
+            <Typography variant="body1">Other hobbies:</Typography>
             <img src={SoccerBall} alt="soccerball" width='50px' style={{opacity:'80%',  transform: 'rotate(-30deg)'}}/>
             <img src={Camera} alt="camera" width='80px' style={{opacity:'80%', transform: 'rotate(-30deg)'}}/>
-            <li><Typography variant="body1" style={{display: 'inline-block'}}>HTML and Batch programming at 11</Typography></li>
+            <li><Typography variant="body1" style={{display: 'inline-block'}}>HTML and Batch programming at the age of 11</Typography></li>
             <img alt="commandprompt" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fc.tenor.com%2FAcrJynkiNzcAAAAM%2Fcmd-command.gif&f=1&nofb=1&ipt=7441f9c339779f4c18eb8949faaac2ac06b8d79b4f58d1f86e99190eea5e3288&ipo=images" width='200px' style={{margin: '1em 0 1em 30vw', marginLeft: '30vw', marginTop: '1em', opacity:'90%'}}/>          
             <li><Typography variant="body1" style={{display: 'inline-block'}}>Learned game developement in my years at high school</Typography></li>
             <li><Typography variant="body1" style={{display: 'inline-block'}}>A passion for the environment; Growing a home vegetable garden.</Typography></li>
@@ -117,7 +115,7 @@ function Home() {
         </Snackbar>
       </Box>
       
-    </div>
+    </>
   );
 }
 
