@@ -29,6 +29,9 @@ const themeOptions: ThemeOptions = {
       secondary: '#c1fdff',
       disabled: '#e53935',
     },
+    info: {
+      main: "#faedcd"
+    },
   },
   typography: {
     h1: {

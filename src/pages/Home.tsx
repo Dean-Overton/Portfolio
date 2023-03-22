@@ -132,7 +132,7 @@ function Home() {
             variant="filled"
             severity="info"
           >
-            This portfolio is <b>still in developement.</b> Please contact me for a copy of my resume.
+            This portfolio is <b>still in developement.</b>
           </Alert>
         </Snackbar>
       </Box>

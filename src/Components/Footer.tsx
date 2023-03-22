@@ -4,6 +4,8 @@ import SpeedDial from '@mui/material/SpeedDial';
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import Box from '@mui/material/Box/Box';
 import ScrollToTop from 'react-scroll-up';
+import Tooltip from '@mui/material/Tooltip';
+import Fade from '@mui/material/Fade';
 
 
 export default function Footer() {
@@ -18,10 +20,12 @@ export default function Footer() {
                 transitionTimingFunction: 'linear',
                 transitionDelay: '0s'
             }}>
-                <SpeedDial
-                    ariaLabel="Back to top"
-                    icon={<ArrowUpwardIcon />}
-                />
+                <Tooltip title="Scroll to top." placement="top" TransitionComponent={Fade}>
+                    <SpeedDial
+                        ariaLabel="Back to top"
+                        icon={<ArrowUpwardIcon />}
+                    />
+                </Tooltip>
             </ScrollToTop>
         </Box>
     );
