@@ -1,6 +1,10 @@
-import { Alert, Link, Paper, Snackbar, Typography } from '@mui/material';
+import { Alert, Button, Link, Paper, Snackbar, Typography } from '@mui/material';
 import './../App.css';
+
 import { ContactForm } from './../Components/ContactForm';
+import Library from './../Components/Library';
+
+
 import Box from '@mui/material/Box'
 import NavDrawer from './../Components/NavDrawer';
 import Camera from './../images/canon650d.webp';
@@ -47,7 +51,12 @@ function Home() {
             <img src={SoccerBall} alt="soccerball" width='50px' style={{opacity:'80%',  transform: 'rotate(-30deg)'}}/>
             <img src={Camera} alt="camera" width='80px' style={{opacity:'80%', transform: 'rotate(-30deg)'}}/>
             <li><Typography variant="body1" style={{display: 'inline-block'}}>HTML and Batch programming at the age of 11</Typography></li>
-            <img alt="commandprompt" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fc.tenor.com%2FAcrJynkiNzcAAAAM%2Fcmd-command.gif&f=1&nofb=1&ipt=7441f9c339779f4c18eb8949faaac2ac06b8d79b4f58d1f86e99190eea5e3288&ipo=images" width='200px' style={{margin: '1em 0 1em 30vw', marginLeft: '30vw', marginTop: '1em', opacity:'90%'}}/>          
+            <Box>
+              {/* <a href="./../files/Batch Games.zip" download="Batch Games.zip" target='_blank'>
+                <Button>Download Batch Games (Ignore virus detection.)</Button>
+              </a> */}
+              <img alt="commandprompt" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fc.tenor.com%2FAcrJynkiNzcAAAAM%2Fcmd-command.gif&f=1&nofb=1&ipt=7441f9c339779f4c18eb8949faaac2ac06b8d79b4f58d1f86e99190eea5e3288&ipo=images" width='200px' style={{margin: '1em 0 1em 30vw', marginLeft: '30vw', marginTop: '1em', opacity:'90%'}}/>          
+            </Box>
             <li><Typography variant="body1" style={{display: 'inline-block'}}>Learned game developement in my years at high school</Typography></li>
             <li><Typography variant="body1" style={{display: 'inline-block'}}>A passion for the environment; Growing a home vegetable garden.</Typography></li>
             <img alt="esp32 microcontroller" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2F1.bp.blogspot.com%2F-GuWilb37otg%2FXTe1FBKampI%2FAAAAAAAADe8%2FnLT2nCWXoD0mqk4-SD7yUHiod4jCyA2JQCLcBGAs%2Fs1600%2FESP32-Module.png" width='300px' style={{margin: '1em 10vw 1em 0', marginTop: '1em', opacity:'90%'}}/>
@@ -93,15 +102,31 @@ function Home() {
         </div>
         <Typography variant="body1">Website made with <b>React, MUI and Typescript</b></Typography>
         
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
         {/* <div style={{top: '700px', right: '100px', float: 'right', position: 'absolute'}}>
           <VerticalLinearStepper/>
         </div> */}
 
+        <Box 
+          width={{xs: '100vw', md: '80vw'}}
+          marginX="auto"
+          marginY="50px"
+          sx={{
+            // '&:hover': {
+            //   backgroundColor: 'primary.main',
+            //   opacity: [0.9, 0.8, 0.7],
+            // },
+          }} 
+          alignItems="center" 
+          justifyContent="center">
+          <Library/>
+        
+        </Box>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        
         <Snackbar
           open
           autoHideDuration={30000}

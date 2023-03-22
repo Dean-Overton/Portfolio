@@ -9,6 +9,7 @@ import reportWebVitals from './reportWebVitals';
 
 import { createTheme, ThemeOptions, ThemeProvider } from '@mui/material/styles';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import BooksIveRead from './pages/BooksIveRead';
 
 const themeOptions: ThemeOptions = {
   palette: {
@@ -65,6 +66,7 @@ ReactDOM.render(
           <Route path="/" element={<App />}>
             <Route index element={<Home />} />
             <Route path="million-dollar-guide" element={<Book />} />
+            <Route path="my-library" element={<BooksIveRead />} />
             <Route path="*" element={<FourZeroFour />} />
           </Route>
         </Routes>
