@@ -3,15 +3,15 @@ import './../App.css';
 
 import { ContactForm } from './../Components/ContactForm';
 import Library from './../Components/Library';
-
-
+import ButtonReveal from './../Components/CharityButton';
+import Footer from '../Components/Footer';
 import Box from '@mui/material/Box'
 import NavDrawer from './../Components/NavDrawer';
 import Camera from './../images/canon650d.webp';
 import SoccerBall from './../images/soccerball.png';
 import Face from './../images/FaceImage.webp';
 import Avatar from '@mui/material/Avatar';
-import ButtonReveal from './../Components/CharityButton';
+
 
 function Home() {  
   return (
@@ -121,12 +121,9 @@ function Home() {
           <Library/>
         
         </Box>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
         
+        <Footer/>
+
         <Snackbar
           open
           autoHideDuration={30000}
