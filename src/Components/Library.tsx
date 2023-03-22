@@ -12,10 +12,13 @@ import {
    collection,
    getDocs,
    doc,
-   addDoc
+   orderBy,
+   query,
+   limit
 } from 'firebase/firestore/lite';
 
 import { useEffect, useState } from 'react';
+import CircularProgress from '@mui/material/CircularProgress';
 
 const firebaseConfig = {
     apiKey: "AIzaSyBfCiU_sR9vI5XlRzpr2fhs6Tf5quD-2x0",
@@ -36,6 +39,7 @@ const BookItem = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
     ...theme.typography.body2,
     padding: theme.spacing(1),
+    elevation: 15,
     textAlign: 'center',
     color: theme.palette.text.secondary,
   }));
@@ -80,63 +84,47 @@ class Book {
 }
 
 const bookRef = collection(db, "my-books");
+const q = query(bookRef, orderBy("progress"), limit(100));
 
 const Library = () => {
-    const [isError, setIsError] = useState(true)
+    const [isLoading, setIsLoading] = useState(true)
+    const [isError, setIsError] = useState(false)
+    const [errorMessage, setErrorMessage] = useState("")
+
+    const [books, setBooks] = useState([] as Book[])
+
+    const bookTemp = [] as Book[]
 
     useEffect(() => {
         async function getData() {
-            const snap = await getDocs(collection(db, "my-books"));
-            setIsError(false);
+            const snap = await getDocs(q);
             snap.forEach((doc) => {
                 // doc.data() is never undefined for query doc snapshots
-                console.log(doc.id, " => ", doc.data());
+                const thisBook = new Book(doc.data().title, doc.data().authors, doc.data().rating, doc.data().progress)
+                bookTemp.push(thisBook)
             });
-          };
-      
-          // You need to restrict it at some point
-          // This is just dummy code and should be replaced by actual
-            if (isError) {
-                getData();
-            } else {
+            if(books[0]) {
                 console.error("Error loading library");
+                setErrorMessage("Error loading library");
+                setIsError(true);
+                return
+            } else {
+                setIsError(false);
             }
-        // uploadData();
+            setBooks(bookTemp);
+            setIsLoading(false);
+            console.log(books);
+        };
+        try {
+            getData();
+        } catch {
+            console.error("Error loading library");
+            setErrorMessage("Error loading library");
+            setIsError(true);
+        }
     }, []);
 
-    // async function uploadData() {
-    //     await addDoc(bookRef, {
-    //         title: "Rich Dad, Poor Dad", authors: "Robert T. Kiyosaki", rating: 10,
-    //         progress: 100}).then((response) => {
-    //             console.log("Test: " + response);
-    //         });
-    //     await addDoc(bookRef, {
-    //         title: "The Barefoot Investor", authors: "Scott Pape", rating: 10,
-    //         progress: 32}).then((response) => {
-    //             console.log("Test: " + response);
-    //         });
-    //     await addDoc(bookRef, {
-    //         title: "You Say More Than You Think", authors: "Janine Driver", rating: 7,
-    //         progress: 11}).then((response) => {
-    //             console.log("Test: " + response);
-    //         });
-    //     await addDoc(bookRef, {
-    //         title: "100M Offers", authors: "Alex Hormozi", rating: 10,
-    //         progress: 100}).then((response) => {
-    //             console.log("Test: " + response);
-    //         });
-    //     await addDoc(bookRef, {
-    //         title: "Start with Why", authors: "Simon Sinek", rating: 0,
-    //         progress: 0}).then((response) => {
-    //             console.log("Test: " + response);
-    //         });
-    //     await addDoc(bookRef, {
-    //         title: "How to Win Friends and Influence People", authors: "Dale Carnegie", rating: 7,
-    //         progress: 100}).then((response) => {
-    //             console.log("Test: " + response);
-    //         });
-        
-    // }
+
     return (
         <>
             <Typography variant='h2' marginBottom='20px'>My Library</Typography>
@@ -146,134 +134,55 @@ const Library = () => {
                 columnSpacing={{ xs: 1, sm: 2, md: 3 }} 
                 alignItems="center" 
                 justifyContent="center">
-                { isError ? (
-                    <>
-                        <Grid item xs={12}>
-                            <Typography color="red">Error Loading My Recently Read Books!</Typography>
-                        </Grid>
-                       <Grid item xs={12}>
-                            <hr/>
-                        </Grid>
-                    </>
-                ) : (
-                    <>
-                    
-                    {/* // <Grid item xs={3}>
-                    //     <BookItem>
-                    //         <Typography sx={{margin: 2}} variant="h5">${doc.id}The Barefoot Investor</Typography>
-                    //         <Typography sx={{margin: 2}} variant="subtitle1">by Scott Pape</Typography>
-                    //         <LinearProgressWithLabel value={11} />
-                    //     </BookItem>
-                    // </Grid> */}
-                                 
-                        <Grid item xs={3}>
-                            <BookItem>
-                                <Typography sx={{margin: 2}} variant="h5">The Barefoot Investor</Typography>
-                                <Typography sx={{margin: 2}} variant="subtitle1">by Scott Pape</Typography>
-                                <LinearProgressWithLabel value={11} />
-                            </BookItem>
-                        </Grid>
-                        <Grid item xs={3}>
-                            <BookItem>
-                                <Typography sx={{margin: 2}} variant="h5">Sapiens</Typography>
-                                <Typography sx={{margin: 2}} variant="subtitle1">by Yuval Noah Harari</Typography>
-                                <LinearProgressWithLabel value={23} />
-                            </BookItem>
-                        </Grid>
-                        <Grid item xs={3}>
-                            <BookItem>
-                                <Typography sx={{margin: 2}} variant="h5">$100M Offers</Typography>
-                                <Typography sx={{margin: 2}} variant="subtitle1">by Alex Hormozi</Typography>
-                                <LinearProgressWithLabel value={100} />
-                            </BookItem>
-                        </Grid>
-                        <Grid item xs={12}>
-                            <hr/>
-                        </Grid>
-                        <Grid item xs={3}>
-                            <BookItem>
-                                <Typography sx={{margin: 2}} variant="h5">12 Rules for Life</Typography>
-                                <Typography sx={{margin: 2}} variant="subtitle1">by Jordan Peterson</Typography>
-                                <LinearProgressWithLabel value={100} />
-                            </BookItem>
-                        </Grid>
-                        <Grid item xs={3}>
-                            <BookItem>
-                                <Typography sx={{margin: 2}} variant="h5">Brief Answers to the Big Questions</Typography>
-                                <Typography sx={{margin: 2}} variant="subtitle1">by Stephen Hawking</Typography>
-                                <LinearProgressWithLabel value={100} />
-                            </BookItem>
-                        </Grid>
-                        <Grid item xs={3}>
-                            <BookItem>
-                                <Typography sx={{margin: 2}} variant="h5">Ignite</Typography>
-                                <Typography sx={{margin: 2}} variant="subtitle1">by Shannah Kennedy, Lyndall Mitchell</Typography>
-                                <LinearProgressWithLabel value={100} />
-                            </BookItem>
-                        </Grid>
-                        <Grid item xs={12}>
-                            <hr/>
-                        </Grid>
-                        <Grid item xs={3}>
-                            <BookItem>
-                                <Typography sx={{margin: 2}} variant="h5">Think and Grow Rich</Typography>
-                                <Typography sx={{margin: 2}} variant="subtitle1">by Napolleon Hill</Typography>
-                                <LinearProgressWithLabel value={100} />
-                            </BookItem>
-                        </Grid>
-                        <Grid item xs={3}>
-                            <BookItem>
-                                <Typography sx={{margin: 2}} variant="h5">Elon Musk</Typography>
-                                <Typography sx={{margin: 2}} variant="subtitle1">by Ashlee Vance</Typography>
-                                <LinearProgressWithLabel value={100} />
-                            </BookItem>
-                        </Grid>
-                        <Grid item xs={3}>
-                            <BookItem>
-                                <Typography sx={{margin: 2}} variant="h5">Rich Dad, Poor Dad</Typography>
-                                <Typography sx={{margin: 2}} variant="subtitle1">by Robert Kyosaki</Typography>
-                                <LinearProgressWithLabel value={100} />
-                            </BookItem>
-                        </Grid>
-                        <Grid item xs={12}>
-                            <hr/>
-                        </Grid>
-                        <Grid item xs={3}>
-                            <BookItem>
-                                <Typography sx={{margin: 2}} variant="h5">How to make Friends and Influence People</Typography>
-                                <Typography sx={{margin: 2}} variant="subtitle1">by Dale Carnegie</Typography>
-                                <LinearProgressWithLabel value={100} />
-                            </BookItem>
-                        </Grid>
-                        <Grid item xs={3}>
-                            <BookItem>
-                                <Typography sx={{margin: 2}} variant="h5">48 Laws of Power</Typography>
-                                <Typography sx={{margin: 2}} variant="subtitle1">by Robert Greene</Typography>
-                                <LinearProgressWithLabel value={40} />
-                            </BookItem>
-                        </Grid>
-                        <Grid item xs={3}>
-                            <BookItem>
-                                <Typography sx={{margin: 2}} variant="h5">Trillion Dollar Coach</Typography>
-                                <Typography sx={{margin: 2}} variant="subtitle1">by Eric Schmidt, Jonathan Rosenberg, Alan Eagle</Typography>
-                                <LinearProgressWithLabel value={100} />
-                            </BookItem>
-                        </Grid>
-                        <Grid item xs={12}>
-                            <hr/>
-                        </Grid>
-                        <Grid item xs={3}>
-                            <BookItem>
-                                <Typography sx={{margin: 2}} variant="h5">Holes</Typography>
-                                <Typography sx={{margin: 2}} variant="subtitle1">by Michael Grant</Typography>
-                                <LinearProgressWithLabel value={100} />
-                            </BookItem>
-                        </Grid>
-                        <Grid item xs={12}>
-                            <hr/>
-                        </Grid>
-                    </>
-                )}
+                { isLoading ? (
+                <>
+                    <Grid item xs={12}>
+                        <Typography>Loading</Typography>
+                        <CircularProgress />
+                    </Grid>
+                </>
+                ) : (<>
+                    { isError ? (
+                        <>
+                            <Grid item xs={12}>
+                                <Typography color="red">{errorMessage}</Typography>
+                            </Grid>
+                            <Grid item xs={12}>
+                                <hr/>
+                            </Grid>
+                        </>
+                    ) : (
+                        <>
+                            {books.map((book, i) => 
+                            <>
+                                { (i%3==0) ? (
+                                    <>
+                                        <Grid item xs={3}>
+                                            <BookItem>
+                                                <Typography sx={{margin: 2}} variant="h5">{book.title}</Typography>
+                                                <Typography sx={{margin: 2}} variant="subtitle1">{book.authors}</Typography>
+                                                <LinearProgressWithLabel value={book.progress} />
+                                            </BookItem>
+                                        </Grid>
+                                        <Grid item xs={12}>
+                                            <hr/>
+                                        </Grid>
+                                    </>
+                                ) : (
+                                    <>
+                                        <Grid item xs={3}>
+                                            <BookItem>
+                                                <Typography sx={{margin: 2}} variant="h5">{book.title}</Typography>
+                                                <Typography sx={{margin: 2}} variant="subtitle1">{book.authors}</Typography>
+                                                <LinearProgressWithLabel value={book.progress} />
+                                            </BookItem>
+                                        </Grid>
+                                    </>
+                                )}
+                            </>)}                                  
+                        </>
+                    )}
+                </>)}
             </Grid>
         </>
     )
