@@ -15,6 +15,7 @@ import ListItemText from '@mui/material/ListItemText';
 import AutoAwesomeMotionIcon from '@mui/icons-material/AutoAwesomeMotion';
 import AbcIcon from '@mui/icons-material/Abc';
 import MailIcon from '@mui/icons-material/Mail';
+import AutoStoriesIcon from '@mui/icons-material/AutoStories';
 import GitHub from '@mui/icons-material/GitHub';
 
 const drawerWidth = 200;
@@ -107,7 +108,7 @@ export default function NavDrawer() {
         </DrawerHeader>
         <Divider />
         <List>
-          {['About', 'Projects', 'Contact'].map((text, index) => (
+          {['About', 'Projects', 'Contact', 'Books'].map((text, index) => (
             <ListItemButton
               key={text}
               component="a"
@@ -125,7 +126,7 @@ export default function NavDrawer() {
                   justifyContent: 'center',
                 }}
               >
-                {index == 0 ? <AbcIcon/> : index == 1 ? <AutoAwesomeMotionIcon /> : <MailIcon />}
+                {index == 0 ? <AbcIcon/> : index == 1 ? <AutoAwesomeMotionIcon /> : index == 2 ? <MailIcon /> : <AutoStoriesIcon/>}
               </ListItemIcon>
               <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
             </ListItemButton>
