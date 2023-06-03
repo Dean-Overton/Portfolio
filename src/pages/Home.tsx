@@ -76,7 +76,8 @@ function Home() {
             // },
           }} 
           alignItems="center" 
-          justifyContent="center">
+          justifyContent="center"
+          id="books">
           <Library/>
         
         </Box>
