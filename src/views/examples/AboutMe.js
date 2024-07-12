@@ -1,20 +1,20 @@
 import React from "react";
 // react plugin used to create DropdownMenu for selecting items
-import Select from "react-select";
+// import Select from "react-select";
 
 // reactstrap components
 import {
-  Badge,
-  Button,
+  // Badge,
+  // Button,
   Card,
   CardBody,
   CardTitle,
-  FormGroup,
-  Form,
-  Input,
-  InputGroupAddon,
-  InputGroupText,
-  InputGroup,
+  // FormGroup,
+  // Form,
+  // Input,
+  // InputGroupAddon,
+  // InputGroupText,
+  // InputGroup,
   Container,
   Row,
   Col
@@ -26,9 +26,9 @@ import Footer from "components/Footers/Footer.js";
 import SmallProjects from "components/Sections/SmallProjects/index.js";
 
 function AboutUs() {
-  const [specialitySelect, setSpecialitySelect] = React.useState(null);
-  const [firstFocus, setFirstFocus] = React.useState(false);
-  const [emailFocus, setEmailFocus] = React.useState(false);
+  // const [specialitySelect, setSpecialitySelect] = React.useState(null);
+  // const [firstFocus, setFirstFocus] = React.useState(false);
+  // const [emailFocus, setEmailFocus] = React.useState(false);
   React.useEffect(() => {
     document.body.classList.add("about-us");
     document.body.classList.add("sidebar-collapse");
@@ -40,11 +40,11 @@ function AboutUs() {
       document.body.classList.remove("sidebar-collapse");
     };
   }, []);
-  const onSubmit = (e) => {
-    e.preventDefault();
-    e.target.reset();
-    console.log("Submitted");
-  };
+  // const onSubmit = (e) => {
+  //   e.preventDefault();
+  //   e.target.reset();
+  //   console.log("Submitted");
+  // };
   return (
     <>
       <div className="wrapper">
