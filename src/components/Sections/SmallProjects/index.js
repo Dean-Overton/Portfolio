@@ -11,12 +11,25 @@ import {
   Carousel,
   CarouselItem,
   CarouselIndicators,
+  Button,
 } from "reactstrap";
 
 // core components
 import Flashcards from "../../../assets/img/Flashcards.png";
 import Solana from "../../../assets/img/solana.png";
 import Leaf from "../../../assets/img/leaf.png";
+import Havoc from "../../../assets/img/HavocIcon.png";
+
+const DownloadHavoc = () => {
+  const link = document.createElement("a");
+  link.href =
+    "https://drive.google.com/uc?export=download&id=1I-ty6Thl82srr0oWIaKe_DWfxkUElShN";
+  link.setAttribute("download", ""); // This triggers the download
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+};
+
 const items = [
   {
     content: (
@@ -32,7 +45,9 @@ const items = [
         </div>
         <CardBody>
           <h5 className="card-description">
-            This automatic flashcard generator 2023 would take a pdf file (usually my lectures) and then create an Anki flashcard deck making studying a lot more efficient.
+            This automatic flashcard generator 2023 would take a pdf file
+            (usually my lectures) and then create an Anki flashcard deck making
+            studying a lot more efficient.
           </h5>
           <CardTitle tag="h4">Python</CardTitle>
         </CardBody>
@@ -56,7 +71,7 @@ const items = [
         </div>
         <CardBody>
           <h5 className="card-description">
-          Various Python tools 2021 to interact with the Solana Blockchain. 
+            Various Python tools 2021 to interact with the Solana Blockchain.
           </h5>
           <CardTitle tag="h4">Python, Solana CLI</CardTitle>
         </CardBody>
@@ -71,25 +86,48 @@ const items = [
       <Card className="card-testimonial card-plain">
         <div className="card-avatar">
           <a href="#" onClick={(e) => e.preventDefault()}>
-            <img
-              alt="..."
-              className="img img-raised rounded"
-              src={Leaf}
-            ></img>
+            <img alt="..." className="img img-raised rounded" src={Leaf}></img>
           </a>
         </div>
         <CardBody>
           <h5 className="card-description">
-          Routeshare 2020 was a project to provide a platform for users to carpool rides easily and safely. 
+            Routeshare 2020 was a project to provide a platform for users to
+            carpool rides easily and safely.
           </h5>
-          <CardTitle tag="h4">Android Studio (Kotlin), Firebase Backend (Python)</CardTitle>
+          <CardTitle tag="h4">
+            Android Studio (Kotlin), Firebase Backend (Python)
+          </CardTitle>
         </CardBody>
       </Card>
     ),
     src: "0",
     altText: "",
     caption: "",
-  }
+  },
+  {
+    content: (
+      <Card className="card-testimonial card-plain">
+        <div className="card-avatar">
+          <a href="#" onClick={(e) => e.preventDefault()}>
+            <img alt="..." className="img img-raised rounded" src={Havoc}></img>
+          </a>
+        </div>
+        <CardBody>
+          <h5 className="card-description">
+            Havoc 2024 was a game development project where created a 3D
+            fast-paced third person arena shooter. This was in a small group if
+            2-3 people.
+            <br />
+            <Button onClick={DownloadHavoc}>Download Game (WINDOWS)</Button>
+          </h5>
+          <CardTitle tag="h4">Unity, C#</CardTitle>
+        </CardBody>
+      </Card>
+    ),
+    src: "0",
+    altText: "",
+    caption: "",
+  },
 ];
 
 function Testimonials() {
@@ -122,7 +160,9 @@ function Testimonials() {
         data-background-color="black"
       >
         <Row>
-          <h2 className="title ml-auto mr-auto text-center">Other little projects...</h2>
+          <h2 className="title ml-auto mr-auto text-center">
+            Other little projects...
+          </h2>
         </Row>
         <Row>
           <Col md="12">
