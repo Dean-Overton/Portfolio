@@ -1,0 +1,20 @@
+@import "tailwindcss";
+
+@theme {
+  /* Light theme (default) */
+  --color-brand: #fdf0d5;
+  --color-bg: #fdf0d5;
+  --color-surface: #fdf0d5;
+  --color-text: #111827;
+
+  /* Fonts, spacing, etc., optional */
+  --font-display: "Satoshi", "sans-serif";
+}
+
+@theme .dark {
+  /* Dark theme overrides */
+  --color-brand: #14312d;
+  --color-bg: #14312d;
+  --color-surface: #14312d;
+  --color-text: #f9fafb;
+}
