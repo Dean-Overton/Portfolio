@@ -21,15 +21,15 @@ const Landing = () => {
   return (
     <div className="h-screen flex items-center justify-center">
       {/* Inner content block */}
-      <div className="flex flex-col md:flex-row items-center md:items-center text-left space-y-4 md:space-y-0 md:space-x-6">
+      <div className="flex flex-col md:flex-row items-center text-center md:text-left space-y-4 md:space-y-0 md:space-x-6">
         <img
           src="/src/assets/headshot.png"
           alt="Dean Overton's Headshot"
-          className="w-32 h-32 rounded-full object-cover"
+          className="w-64 h-64 rounded-full object-cover"
         />
 
         {/* Text container with fixed width to avoid layout shift */}
-        <div className="relative h-12 w-[360px]">
+        <div className="relative h-12 w-[260px] md:w-[360px]">
           {prevIndex !== null && animating && (
             <div className="absolute w-full text-3xl font-semibold animate-flip-up-out">
               {texts[prevIndex]}

@@ -1,9 +1,12 @@
+import ProjectSection from "../../components/ProjectsSection";
+import Header from "../../components/Header";
+
 const Projects = () => {
   return (
-    <>
-      <div>Projects</div>
-      <button onClick={() => (window.location.href = "/")}>Go home</button>
-    </>
+    <div className="pt-16">
+      <Header title="Projects" />
+      <ProjectSection />
+    </div>
   );
 };
 
