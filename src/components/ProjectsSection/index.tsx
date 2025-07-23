@@ -5,7 +5,7 @@ import ShareMyDoodleLogo from "../../assets/sharemydoodleLogo.png";
 function ProjectSection() {
   return (
     <main className="min-h-screen w-full p-8">
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 max-w-7xl mx-auto place-items-center">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-8 max-w-7xl mx-auto place-items-center">
         <style jsx global>{`
           :root {
             --hc-card-radius: 24px;
