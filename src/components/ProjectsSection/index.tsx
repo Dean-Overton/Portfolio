@@ -4,9 +4,9 @@ import ShareMyDoodleLogo from "../../assets/sharemydoodleLogo.png";
 
 function ProjectSection() {
   return (
-    <main className="min-h-screen w-full p-8">
+    <main className="w-full p-8">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-8 max-w-7xl mx-auto place-items-center">
-        <style jsx global>{`
+        <style>{`
           :root {
             --hc-card-radius: 24px;
           }
@@ -45,7 +45,7 @@ function ProjectSection() {
           .hc-card {
             width: 320px;
             height: 480px;
-            border-radius: var(--hc-card-radius);
+            border-radius: var(--radius-xl);
             position: relative;
             background: radial-gradient(
                 farthest-side circle at var(--pointer-x) var(--pointer-y),
@@ -76,7 +76,7 @@ function ProjectSection() {
           .hc-inside {
             position: absolute;
             inset: 1px;
-            border-radius: var(--hc-card-radius);
+            border-radius: var(--radius-xl);
             background: linear-gradient(145deg, #2d2333 0%, #3a5e74 100%);
             transform: translateZ(0.1px);
             overflow: hidden;
@@ -149,8 +149,6 @@ function ProjectSection() {
         <ProjectCard
           title="StackSensai"
           description="Saas web app to create and recommend technologies for a given project based on a prompt. Engineered front-end dashboard and backend authentication for a seamless user experience. Built with React, Typescript, Material UI, AWS Amplify & Cognito and OpenAI API."
-          imageUrl={null}
-          link={null}
         />
       </div>
     </main>

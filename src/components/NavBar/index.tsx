@@ -61,8 +61,8 @@ const NavBar = () => {
                   relative py-2 text-sm font-medium transition-colors duration-200
                   ${
                     location.pathname === item.path
-                      ? "text-text-secondary"
-                      : "text-text-important"
+                      ? "text-text-important"
+                      : "text-text-secondary"
                   }
                   after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5
                   after:transform after:scale-x-0

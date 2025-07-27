@@ -3,29 +3,6 @@
 
 @custom-variant dark (&:is(.dark *));
 
-@theme {
-  /* Light theme (default) */
-  --color-brand: #edf6f9;
-  --color-bg: #edf6f9;
-  --color-surface: #edf6f9;
-  --color-text: #006d77;
-  --color-text-secondary: #ffddd2;
-  --color-text-important: #e29578;
-
-  /* Fonts, spacing, etc., optional */
-  --font-display: "Satoshi", "sans-serif";
-}
-
-@theme dark {
-  /* Dark theme overrides */
-  --color-brand: #1e293b;
-  --color-bg: #1e293b;
-  --color-surface: #1e293b;
-  --color-text: #edf6f9;
-  --color-text-secondary: #ffddd2;
-  --color-text-important: #e29578;
-}
-
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
@@ -66,16 +43,18 @@
 
 :root {
   --radius: 0.625rem;
-  --background: oklch(1 0 0);
+  --background: #edf6f9;
   --foreground: oklch(0.129 0.042 264.695);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.129 0.042 264.695);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.129 0.042 264.695);
   --primary: oklch(0.208 0.042 265.755);
-  --primary-foreground: oklch(0.984 0.003 247.858);
+  --primary-foreground: #edf6f9;
   --secondary: oklch(0.968 0.007 247.896);
   --secondary-foreground: oklch(0.208 0.042 265.755);
+  --color-text-secondary: #d46235;
+  --color-text-important: #a84924;
   --muted: oklch(0.968 0.007 247.896);
   --muted-foreground: oklch(0.554 0.046 257.417);
   --accent: oklch(0.968 0.007 247.896);
@@ -97,10 +76,12 @@
   --sidebar-accent-foreground: oklch(0.208 0.042 265.755);
   --sidebar-border: oklch(0.929 0.013 255.508);
   --sidebar-ring: oklch(0.704 0.04 256.788);
+
+  --font-display: "Satoshi", "sans-serif";
 }
 
 .dark {
-  --background: oklch(0.129 0.042 264.695);
+  --background: #1e293b;
   --foreground: oklch(0.984 0.003 247.858);
   --card: oklch(0.208 0.042 265.755);
   --card-foreground: oklch(0.984 0.003 247.858);
@@ -110,6 +91,8 @@
   --primary-foreground: oklch(0.208 0.042 265.755);
   --secondary: oklch(0.279 0.041 260.031);
   --secondary-foreground: oklch(0.984 0.003 247.858);
+  --color-text-secondary: #ffddd2;
+  --color-text-important: #e29578;
   --muted: oklch(0.279 0.041 260.031);
   --muted-foreground: oklch(0.704 0.04 256.788);
   --accent: oklch(0.279 0.041 260.031);
