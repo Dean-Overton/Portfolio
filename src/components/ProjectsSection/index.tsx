@@ -10,6 +10,7 @@ function ProjectSection() {
         <ProjectCard
           title="TripTiler"
           description="A mobile app for itinerary planning featuring swipe-based activity discovery, drag-and-drop day scheduling, and real-time trip sharing between friends. Built with a Flutter client targeting native iOS and Android, a Go backend exposing REST APIs, and containerised services deployed on Google Cloud Run for serverless autoscaling."
+          link="https://triptiler.com"
         />
         <ProjectCard
           title="Share My Doodle"
@@ -21,7 +22,7 @@ function ProjectSection() {
           title="Digiwize"
           description="Leading my capstone team and developing a cross-repository code and productivity analytics platform/SaaS. Initiated development operations (DevOps) with an easy/efficient CI/CD pipeline, and engineered API authentication with JWT and user encryption. Built with React, ShadCN, NestJs, Typescript, and PostgreSQL. Hosted on AWS S3, RDS and ECS with Docker."
           imageUrl={DigiwizeLogo}
-          link="https://www.digiwize.solutions"
+          link="https://digiwize.solutions"
         />
         <ProjectCard
           title="StackSensai"

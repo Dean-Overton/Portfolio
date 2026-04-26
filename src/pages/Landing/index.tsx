@@ -2,7 +2,7 @@ import AboutMe from "@/components/AboutMeSection";
 import Header from "@/components/Header";
 import { SocialLinks } from "@/components/ui/social-links";
 import { Timeline } from "@/components/ui/timeline";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import ProfileImage from "@/assets/headshot.png";
 import Github from "@/assets/github.png";
 import Instagram from "@/assets/instagram.png";
@@ -17,6 +17,45 @@ import Trophy from "../../assets/animations/trophy.lottie";
 import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 
 const texts = ["Hello, I'm Dean Overton", "Hola, estoy Dean Overton"];
+
+const TrophyMilestone = () => {
+  const ref = useRef<HTMLDivElement>(null);
+  const [inView, setInView] = useState(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setInView(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.3 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <div className="flex flex-row items-center h-full -ml-15 md:mr-0">
+      <div ref={ref} style={{ width: 128, height: 128 }}>
+        {inView && (
+          <DotLottieReact
+            src={Trophy}
+            loop={false}
+            autoplay
+            style={{ width: 128, height: 128 }}
+          />
+        )}
+      </div>
+      <p className="text-card-foreground text-xs md:text-lg font-bold ml-4">
+        Finish university. Achieving a WAM of 84.
+      </p>
+    </div>
+  );
+};
 
 const socials = [
   {
@@ -121,7 +160,7 @@ const timelineData = [
           <img
             src="https://cdn.prod.website-files.com/63fbf83476853103aa37bdca/644b25c73991562c90d2701f_binarytech_logo_white.svg"
             alt="BinaryTech Logo"
-            className="w-32 h-auto mb-4"
+            className="w-32 h-auto mb-4 invert dark:invert-0"
           />
         </a>
         <p className="text-card-foreground text-xs md:text-lg font-bold">
@@ -153,19 +192,7 @@ const timelineData = [
   },
   {
     title: "2025 June",
-    content: (
-      <div className="flex flex-row items-center h-full -ml-15 md:mr-0">
-        <DotLottieReact
-          src={Trophy}
-          loop
-          autoplay
-          style={{ width: 128, height: 128 }}
-        />
-        <p className="text-card-foreground text-xs md:text-lg font-bold ml-4">
-          Finish university. Achieving a WAM of 84.
-        </p>
-      </div>
-    ),
+    content: <TrophyMilestone />,
   },
   {
     title: "2026 January",
@@ -174,6 +201,7 @@ const timelineData = [
         <ProjectCard
           title="TripTiler"
           description="A mobile app for itinerary planning featuring swipe-based activity discovery, drag-and-drop day scheduling, and real-time trip sharing between friends. Built with a Flutter client targeting native iOS and Android, a Go backend exposing REST APIs, and containerised services deployed on Google Cloud Run for serverless autoscaling."
+          link="https://triptiler.com"
         />
       </div>
     ),
