@@ -49,7 +49,9 @@ const NavBar = () => {
       "
     >
       <div className="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
-        <h1 className="text-xl font-bold">Dean Overton</h1>
+        <h1 className="text-xl font-bold text-color-foreground">
+          Dean Overton
+        </h1>
 
         {/* Desktop Menu */}
         <ul className="hidden md:flex items-center gap-8">
@@ -58,18 +60,22 @@ const NavBar = () => {
               <Link
                 to={item.path}
                 className={`
-                  relative py-2 text-sm font-medium transition-colors duration-200
-                  ${
-                    location.pathname === item.path
-                      ? "text-text-important"
-                      : "text-text-secondary"
-                  }
-                  after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5
-                  after:transform after:scale-x-0
-                  after:transition-transform after:duration-200 after:origin-left
-                  hover:after:scale-x-100
-                  ${location.pathname === item.path ? "after:scale-x-100" : ""}
-                `}
+          relative py-2 text-sm font-medium transition-colors duration-200
+          ${
+            location.pathname === item.path
+              ? "text-color-foreground"
+              : "text-text-secondary"
+          }
+          after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5
+          after:transform after:scale-x-0
+          after:transition-transform after:duration-200 after:origin-left
+          hover:after:scale-x-100
+          ${
+            location.pathname === item.path
+              ? "after:scale-x-100 after:bg-color-foreground"
+              : "after:bg-text-secondary"
+          }
+            `}
               >
                 {item.name}
               </Link>
@@ -90,17 +96,17 @@ const NavBar = () => {
           >
             <div className="w-6 h-6 flex flex-col justify-center space-y-1">
               <span
-                className={`block h-0.5 w-6 bg-text transition-transform duration-300 ${
+                className={`block h-0.5 w-6 bg-gray-800 dark:bg-gray-200 transition-transform duration-300 ${
                   isMobileMenuOpen ? "rotate-45 translate-y-1.5" : ""
                 }`}
               />
               <span
-                className={`block h-0.5 w-6 bg-text transition-opacity duration-300 ${
+                className={`block h-0.5 w-6 bg-gray-800 dark:bg-gray-200 transition-opacity duration-300 ${
                   isMobileMenuOpen ? "opacity-0" : ""
                 }`}
               />
               <span
-                className={`block h-0.5 w-6 bg-text transition-transform duration-300 ${
+                className={`block h-0.5 w-6 bg-gray-800 dark:bg-gray-200 transition-transform duration-300 ${
                   isMobileMenuOpen ? "-rotate-45 -translate-y-1.5" : ""
                 }`}
               />

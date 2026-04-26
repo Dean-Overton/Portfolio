@@ -1,6 +1,7 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
 import NavBar from "../components/NavBar";
+import Footer from "@/components/Footer";
 
 const MainLayout: React.FC = () => {
   return (
@@ -9,6 +10,7 @@ const MainLayout: React.FC = () => {
       <main className="flex-1 overflow-auto">
         <Outlet />
       </main>
+      <Footer />
     </div>
   );
 };
