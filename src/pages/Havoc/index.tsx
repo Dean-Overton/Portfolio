@@ -1,9 +1,17 @@
 import Header from "@/components/Header";
+import { useDocumentMeta } from "@/lib/useDocumentMeta";
 import React from "react";
 import { useState, Suspense } from "react";
 import { useUnityContext, Unity } from "react-unity-webgl";
 
 const Havoc: React.FC = () => {
+  useDocumentMeta({
+    title: "Havoc | A 3D Arena Shooter by Dean Overton",
+    description:
+      "Play Havoc, a 3D fast-paced third-person arena shooter built in Unity and C#. A group project where Dean Overton contributed enemy AI and gameplay mechanics.",
+    canonical: "https://deanoverton.com/projects/havoc",
+  });
+
   const [showUnity, setShowUnity] = useState(false);
 
   return (

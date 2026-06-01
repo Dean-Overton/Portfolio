@@ -2,7 +2,16 @@
   "permissions": {
     "allow": [
       "Bash(npm audit *)",
-      "Bash(npm run *)"
+      "Bash(npm run *)",
+      "Bash(npm view *)",
+      "Bash(npm install *)",
+      "Bash(aws cloudfront get-distribution *)",
+      "Bash(aws cloudfront list-functions *)",
+      "Bash(aws cloudfront *)",
+      "Bash(curl -s https://deanoverton.com/)",
+      "Bash(curl -s https://deanoverton.com/projects)",
+      "Bash(curl -s https://deanoverton.com/contact)",
+      "Bash(curl -s https://deanoverton.com/projects/havoc)"
     ]
   }
 }

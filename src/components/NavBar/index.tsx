@@ -20,6 +20,7 @@ const NavBar = () => {
   const menuItems = [
     { name: "Home", path: "/" },
     { name: "Projects", path: "/projects" },
+    { name: "CV", path: "/cv.pdf", external: true },
     { name: "Contact", path: "/contact" },
   ];
 
@@ -55,32 +56,40 @@ const NavBar = () => {
 
         {/* Desktop Menu */}
         <ul className="hidden md:flex items-center gap-8">
-          {menuItems.map((item) => (
-            <li key={item.path}>
-              <Link
-                to={item.path}
-                className={`
+          {menuItems.map((item) => {
+            const isActive = !item.external && location.pathname === item.path;
+            const className = `
           relative py-2 text-sm font-medium transition-colors duration-200
-          ${
-            location.pathname === item.path
-              ? "text-color-foreground"
-              : "text-text-secondary"
-          }
+          ${isActive ? "text-color-foreground" : "text-text-secondary"}
           after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5
           after:transform after:scale-x-0
           after:transition-transform after:duration-200 after:origin-left
           hover:after:scale-x-100
           ${
-            location.pathname === item.path
+            isActive
               ? "after:scale-x-100 after:bg-color-foreground"
               : "after:bg-text-secondary"
           }
-            `}
-              >
-                {item.name}
-              </Link>
-            </li>
-          ))}
+            `;
+            return (
+              <li key={item.path}>
+                {item.external ? (
+                  <a
+                    href={item.path}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={className}
+                  >
+                    {item.name}
+                  </a>
+                ) : (
+                  <Link to={item.path} className={className}>
+                    {item.name}
+                  </Link>
+                )}
+              </li>
+            );
+          })}
           <li>
             <DayAndNightToggle onChange={toggleTheme} checked={isDarkMode} />
           </li>
@@ -127,24 +136,36 @@ const NavBar = () => {
         }}
       >
         <ul className="px-4 py-2 space-y-2">
-          {menuItems.map((item) => (
-            <li key={item.path}>
-              <Link
-                to={item.path}
-                onClick={() => setIsMobileMenuOpen(false)}
-                className={`
+          {menuItems.map((item) => {
+            const isActive = !item.external && location.pathname === item.path;
+            const className = `
           block py-3 px-2 rounded-md text-sm font-medium transition-colors duration-200
-          ${
-            location.pathname === item.path
-              ? "text-text-important"
-              : "text-text-secondary"
-          }
-            `}
-              >
-                {item.name}
-              </Link>
-            </li>
-          ))}
+          ${isActive ? "text-text-important" : "text-text-secondary"}
+            `;
+            return (
+              <li key={item.path}>
+                {item.external ? (
+                  <a
+                    href={item.path}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className={className}
+                  >
+                    {item.name}
+                  </a>
+                ) : (
+                  <Link
+                    to={item.path}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className={className}
+                  >
+                    {item.name}
+                  </Link>
+                )}
+              </li>
+            );
+          })}
         </ul>
       </div>
     </nav>

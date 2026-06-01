@@ -9,7 +9,7 @@ export default defineConfig({
   build: {
     outDir: "dist",
   },
-  base: "./",
+  base: "/",
   optimizeDeps: {
     include: ["shallowequal"],
   },
@@ -18,5 +18,5 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
     },
   },
-  assetsInclude: ["**/*.lottie"],
+  assetsInclude: ["**/*.lottie", "**/*.jfif"],
 });
