@@ -1,5 +1,10 @@
 import { useState } from "react";
+import { createPortal } from "react-dom";
 import HolographicCard from "../HolographicCard";
+
+const TOOLTIP_OFFSET = 14;
+/** Rough width budget used to decide whether to flip the tooltip to the left. */
+const TOOLTIP_FLIP_MARGIN = 220;
 
 export const ProjectCard = ({
   title,
@@ -31,11 +36,8 @@ export const ProjectCard = ({
         onClick={() => link && window.open(link, "_blank")}
         onPointerMove={(e) => {
           if (!tooltipText) return;
-          const rect = e.currentTarget.getBoundingClientRect();
-          setTooltipPos({
-            x: e.clientX - rect.left,
-            y: e.clientY - rect.top,
-          });
+          // Viewport coords: the tooltip is portalled out and positioned fixed.
+          setTooltipPos({ x: e.clientX, y: e.clientY });
         }}
         onPointerLeave={() => setTooltipPos(null)}
         style={{ cursor: link ? "pointer" : "default" }}
@@ -59,18 +61,33 @@ export const ProjectCard = ({
             <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
           </svg>
         )}
-        {tooltipText && tooltipPos && (
-          <span
-            className="pointer-events-none absolute z-10 whitespace-nowrap rounded-md bg-black/80 px-2 py-1 text-xs text-white"
-            style={{
-              left: tooltipPos.x + 14,
-              top: tooltipPos.y + 14,
-            }}
-            role="tooltip"
-          >
-            {tooltipText}
-          </span>
-        )}
+        {/*
+          Portalled to the body: the card clips its children (`overflow: hidden`
+          on .hc-card / .hc-inside) and its 3D transform traps any z-index, so an
+          in-card tooltip is always cut off at the card's edge.
+        */}
+        {tooltipText &&
+          tooltipPos &&
+          createPortal(
+            <span
+              className="pointer-events-none fixed z-[300] whitespace-nowrap rounded-md bg-black/80 px-2 py-1 text-xs text-white shadow-lg"
+              style={
+                tooltipPos.x + TOOLTIP_FLIP_MARGIN > window.innerWidth
+                  ? {
+                      right: window.innerWidth - tooltipPos.x + TOOLTIP_OFFSET,
+                      top: tooltipPos.y + TOOLTIP_OFFSET,
+                    }
+                  : {
+                      left: tooltipPos.x + TOOLTIP_OFFSET,
+                      top: tooltipPos.y + TOOLTIP_OFFSET,
+                    }
+              }
+              role="tooltip"
+            >
+              {tooltipText}
+            </span>,
+            document.body
+          )}
         {imageUrl && (
           <img
             src={imageUrl}

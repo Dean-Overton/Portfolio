@@ -1,22 +1,33 @@
 import AboutMe from "@/components/AboutMeSection";
 import Header from "@/components/Header";
-import { SocialLinks } from "@/components/ui/social-links";
+import { OrbitingSocials } from "@/components/ui/orbiting-socials";
 import { Timeline } from "@/components/ui/timeline";
 import { useEffect, useRef, useState } from "react";
 import { useDocumentMeta } from "@/lib/useDocumentMeta";
 import ProfileImage from "@/assets/headshot.jfif";
-import Github from "@/assets/github.png";
-import Instagram from "@/assets/instagram.png";
-import LinkedIn from "@/assets/linkedin.png";
-import TikTok from "@/assets/tiktok.png";
+import { socials } from "@/data/socials";
 import { ProjectCard } from "@/components/ProjectCard";
 import "@/components/ProjectsSection/index.css";
 import { getProject } from "@/data/projects";
 import OffToSchoolAnimation from "../../assets/animations/offtoschool.lottie";
 import Trophy from "../../assets/animations/trophy.lottie";
 import { DotLottieReact } from "@lottiefiles/dotlottie-react";
+import StreamIn from "@/components/StreamIn";
+import { introReducedMotion } from "@/components/IntroGate/store";
+import Typewriter from "@/components/Typewriter";
+import { ChevronDown, Download } from "lucide-react";
 
-const texts = ["Hello, I'm Dean Overton", "Hola, estoy Dean Overton"];
+const DEFAULT_HEADING = "Hi, I'm Dean";
+/** Shown while a visitor keeps a social icon pinned under the cursor. */
+const HOLD_HEADING = "Maybe you should let go";
+
+/** Drops the visitor at the first entry of the journey timeline. */
+const scrollToJourney = () =>
+  document.getElementById("journey")?.scrollIntoView({
+    behavior: introReducedMotion() ? "auto" : "smooth",
+    block: "start",
+  });
+
 
 const TrophyMilestone = () => {
   const ref = useRef<HTMLDivElement>(null);
@@ -56,29 +67,6 @@ const TrophyMilestone = () => {
     </div>
   );
 };
-
-const socials = [
-  {
-    name: "LinkedIn",
-    image: LinkedIn,
-    url: "https://www.linkedin.com/in/dean-overton-55552221a/",
-  },
-  {
-    name: "GitHub",
-    image: Github,
-    url: "https://github.com/Dean-Overton",
-  },
-  {
-    name: "Instagram",
-    image: Instagram,
-    url: "https://www.instagram.com/deanovertonofficial",
-  },
-  {
-    name: "TikTok",
-    image: TikTok,
-    url: "https://www.tiktok.com/@dean0verton",
-  },
-];
 
 const timelineData = [
   {
@@ -132,7 +120,7 @@ const timelineData = [
     ),
   },
   {
-    title: "2025 March",
+    title: "2025 March\nto Present",
     content: (
       <div className="h-full flex flex-col gap-2 mt-2 justify-start items-start">
         <a
@@ -147,32 +135,32 @@ const timelineData = [
           />
         </a>
         <p className="text-card-foreground text-xs md:text-lg font-bold">
-          Junior Software Engineer.
+          Software Engineer.
+        </p>
+        <p className="text-card-foreground/80 text-xs md:text-base font-normal text-left mb-2">
+          Full-stack engineer on a B2B IoT SaaS platform, in a small product
+          team.
         </p>
         <ul className="text-card-foreground text-xs md:text-lg font-normal text-left list-disc pl-5 space-y-2">
           <li>
-            Overhauled the team's full-stack development lifecycle. Redesigned
-            CI/CD and DevOps pipelines with Docker and GitHub Actions,
-            resulting in a <b>5x cycle time</b> improvement.
+            Rebuilt CI/CD and DevOps on Docker and GitHub Actions —{" "}
+            <b>5x faster cycle time</b>.
           </li>
           <li>
-            Migrated the webapp to Vite and Yarn Berry, delivering a{" "}
-            <b>45x build time improvement</b>.
+            Moved the web app to Vite and Yarn Berry —{" "}
+            <b>45x faster builds</b>.
           </li>
           <li>
-            Reduced onboarding for new developers from{" "}
-            <b>several days to under a couple of hours</b> using Docker and
-            shell scripts, greatly boosting team efficiency.
+            Cut developer onboarding from <b>days to under two hours</b> with
+            Docker and scripted setup.
           </li>
           <li>
-            Decreased lead time from <b>weeks to days</b> with automated
-            testing, automated cloud preview environments, and faster code and
-            feature review practices.
+            Took lead time from <b>weeks to days</b> with automated testing and
+            cloud preview environments.
           </li>
           <li>
-            Increased customer satisfaction with an in-app RAG chatbot that
-            answers product queries instantly, instead of customers waiting
-            hours for a response.
+            Shipped an in-app RAG chatbot that answers product questions
+            instantly, replacing hours-long support waits.
           </li>
         </ul>
         <p className="text-card-foreground text-xs md:text-base font-normal text-left mt-2">
@@ -212,75 +200,88 @@ const Landing = () => {
     canonical: "https://deanoverton.com/",
   });
 
-  const [index, setIndex] = useState(0);
-  const [animating, setAnimating] = useState(false);
-  const [prevIndex, setPrevIndex] = useState<number | null>(null);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setPrevIndex(index);
-      setIndex((prev) => (prev + 1) % texts.length);
-      setAnimating(true);
-      setTimeout(() => setAnimating(false), 600);
-    }, 3000);
-
-    return () => clearInterval(interval);
-  }, [index]);
+  const [holdingSocial, setHoldingSocial] = useState(false);
 
   return (
     <>
       <div className="min-h-screen flex flex-col items-center justify-center mb-4">
         {/* Inner content block */}
-        <div className="flex flex-col md:flex-row items-center text-center md:text-left space-y-4 md:space-y-0 md:space-x-6">
-          <img
-            src={ProfileImage}
-            alt="Dean Overton, full-stack software engineer, headshot"
-            className="w-100 h-100 rounded-full object-cover"
-          />
-
-          <div className="flex flex-col items-center md:items-start">
-            <h1 className="sr-only">
-              Dean Overton, Full-Stack Software Engineer
-            </h1>
-            {/* Text container with fixed width to avoid layout shift */}
-            <div
-              className="relative h-12 w-[260px] md:w-[360px] mb-4"
-              aria-hidden="true"
-            >
-              {prevIndex !== null && animating && (
-                <div className="absolute w-full text-3xl font-semibold animate-flip-up-out">
-                  {texts[prevIndex]}
-                </div>
-              )}
-              <div
-                className={`absolute w-full text-3xl font-semibold ${
-                  animating ? "animate-flip-down-in" : ""
-                }`}
-              >
-                {texts[index]}
-              </div>
-            </div>
-
-            {/* Social Links */}
-            <SocialLinks socials={socials} className="mt-4" />
+        <div className="flex flex-col md:flex-row items-center text-center md:text-left space-y-10 md:space-y-0 md:space-x-14">
+          {/* id is where the intro tour parks the page before its descent */}
+          <div id="hero-avatar">
+            <StreamIn delay={0.05}>
+              <OrbitingSocials
+                socials={socials}
+                src={ProfileImage}
+                alt="Dean Overton, full-stack software engineer, headshot"
+                onHoldChange={setHoldingSocial}
+              />
+            </StreamIn>
           </div>
+
+          <StreamIn
+            delay={0.35}
+            className="flex flex-col items-center md:items-start"
+          >
+            <h1 className="text-3xl font-semibold">
+              <Typewriter
+                text={holdingSocial ? HOLD_HEADING : DEFAULT_HEADING}
+              />
+            </h1>
+            <div className="mt-5 flex items-center gap-3">
+              <button
+                type="button"
+                onClick={scrollToJourney}
+                className="group inline-flex items-center gap-2 rounded-full border border-foreground/20 px-5 py-2 text-sm font-medium transition-colors hover:bg-foreground/5"
+              >
+                See More
+                <ChevronDown
+                  size={16}
+                  className="transition-transform group-hover:translate-y-0.5"
+                />
+              </button>
+              <a
+                href="/cv.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group inline-flex items-center gap-2 rounded-full border border-foreground/20 px-5 py-2 text-sm font-medium transition-colors hover:bg-foreground/5"
+              >
+                CV
+                <Download
+                  size={16}
+                  className="transition-transform group-hover:translate-y-0.5"
+                />
+              </a>
+            </div>
+          </StreamIn>
         </div>
       </div>
-      <div className="flex flex-col items-center justify-center my-8 w-full">
+      <div
+        id="journey"
+        className="flex flex-col items-center justify-center my-8 w-full scroll-mt-24"
+      >
         {/* Inner content block */}
-        <div className="flex flex-col items-center text-center md:text-center space-y-2 md:space-y-0 flex-grow max-w-4xl xl:max-w-6xl mx-auto">
-          <Header title="My Journey" level={2} />
+        <StreamIn
+          delay={0.6}
+          className="flex flex-col items-center text-center md:text-center space-y-2 md:space-y-0 flex-grow max-w-4xl xl:max-w-6xl mx-auto"
+        >
           <div className="w-full flex justify-center">
             <Timeline data={timelineData} />
           </div>
-        </div>
+        </StreamIn>
       </div>
-      <div className="flex flex-col items-center justify-center my-8 w-full min-h-[80vh]">
+      <div
+        id="about"
+        className="flex flex-col items-center justify-center my-8 w-full min-h-[80vh] scroll-mt-24"
+      >
         {/* Inner content block */}
-        <div className="flex flex-col items-center justify-center text-center md:text-left space-y-4 md:space-y-0 md:space-x-6 flex-grow">
+        <StreamIn
+          delay={0.85}
+          className="flex flex-col items-center justify-center text-center md:text-left space-y-4 md:space-y-0 md:space-x-6 flex-grow"
+        >
           <Header title="About Me" level={2} />
           <AboutMe />
-        </div>
+        </StreamIn>
       </div>
     </>
   );

@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { Outlet, useLocation } from "react-router-dom";
 import NavBar from "../components/NavBar";
 import Footer from "@/components/Footer";
+import IntroGate from "@/components/IntroGate";
 
 const MainLayout: React.FC = () => {
   const { pathname } = useLocation();
@@ -17,6 +18,7 @@ const MainLayout: React.FC = () => {
         <Outlet />
       </main>
       <Footer />
+      <IntroGate />
     </div>
   );
 };

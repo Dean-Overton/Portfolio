@@ -10,9 +10,6 @@ export default defineConfig({
     outDir: "dist",
   },
   base: "/",
-  optimizeDeps: {
-    include: ["shallowequal"],
-  },
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),

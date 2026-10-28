@@ -1,38 +1,14 @@
-@keyframes flipUpOut {
-  0% {
-    opacity: 1;
-    transform: rotateX(0deg) translateY(0);
-  }
-  100% {
-    opacity: 0;
-    transform: rotateX(-90deg) translateY(2.25rem);
-  }
-}
-
-@keyframes flipDownIn {
-  0% {
-    opacity: 0;
-    transform: rotateX(90deg) translateY(-2.25rem);
-  }
-  100% {
-    opacity: 1;
-    transform: rotateX(0deg) translateY(0);
-  }
-}
-
-.animate-flip-up-out {
-  animation: flipUpOut 0.4s ease-in-out forwards;
-  transform-origin: top;
-  position: absolute;
-  width: 100%;
-}
-
-.animate-flip-down-in {
-  animation: flipDownIn 0.4s ease-in-out forwards;
-  transform-origin: top;
-  position: absolute;
-  width: 100%;
-}
 .grecaptcha-badge {
   visibility: hidden;
+}
+
+/* ChatGPT-style intro gate */
+.gpt-sans {
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+    Helvetica, Arial, sans-serif;
+}
+
+html.intro-locked,
+html.intro-locked body {
+  overflow: hidden;
 }
